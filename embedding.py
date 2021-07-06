@@ -9,9 +9,9 @@ for file in fileList:
     path = os.path.join(train_path, file)
     f = open(path,'r')
     sentences = f.readlines()
-    for sentence in sentences:
-        embedding = bc.encode(sentence)
-        with open(r'~\huiwei\bert\bert_emb_train','a+') as f1:
+    embeddings = bc.encode(sentences)
+    for embedding in embeddings:
+        with open(r'/home/weihui/huiwei/bert/bert_emb_train', 'a+') as f1:
             f1.write(embedding+'\n')
     f1.write('\n')
     f.close()
