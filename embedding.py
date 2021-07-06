@@ -6,7 +6,8 @@ bc = BertClient()  # ip address of the GPU machine
 train_path = r'/home/weihui/huiwei/baseline/text-segmentation-master/data/WikiSection/wikisection_dataset_ref/en_city_train'
 fileList = os.listdir(train_path)
 for file in fileList:
-    f = open(file,'r')
+    path = os.join.path(train_path, file)
+    f = open(path,'r')
     sentences = f.readlines()
     for sentence in sentences:
         embedding = bc.encode(sentence)
