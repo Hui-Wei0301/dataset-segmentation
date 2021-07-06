@@ -12,7 +12,7 @@ for file in fileList:
     embeddings = bc.encode(sentences)
     for embedding in embeddings:
         with open(r'/home/weihui/huiwei/bert/bert_emb_train', 'a+') as f1:
-            f1.write(embedding, '\n')
+            f1.writeline(embedding)
     f1.write('\n')
     f.close()
 f1.close()
