@@ -12,10 +12,10 @@ for file in fileList:
     embeddings = bc.encode(sentences)
     for embedding in embeddings:
         print(embedding)
-        print(str(embedding)
+        print(str(embedding))
 #         with open(r'/home/weihui/huiwei/bert/bert_emb_train', 'a+') as f1:
 #             f1.writelines(embedding)
 #     f1.write('\n')
     f.close()
-f1.close()
+# f1.close()
 # bc.encode(['First do it', 'then do it right', 'then do it better'])
