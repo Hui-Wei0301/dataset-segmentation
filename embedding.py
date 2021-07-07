@@ -11,8 +11,9 @@ for file in fileList:
     sentences = f.readlines()
     embeddings = bc.encode(sentences)
     for embedding in embeddings:
-        with open(r'/home/weihui/huiwei/bert/bert_emb_train', 'a+') as f1:
-            f1.writelines(str(embedding))
+        f1 = open(r'/home/weihui/huiwei/bert/bert_emb_train', 'a+')
+        f1.writelines(str(embedding))
     f1.write('\n')
     f.close()
+ f1.close()
 # bc.encode(['First do it', 'then do it right', 'then do it better'])
