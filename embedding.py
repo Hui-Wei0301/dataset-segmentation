@@ -15,5 +15,5 @@ for file in fileList:
         f1.writelines(str(embedding))
     f1.write('\n')
     f.close()
- f1.close()
+f1.close()
 # bc.encode(['First do it', 'then do it right', 'then do it better'])
