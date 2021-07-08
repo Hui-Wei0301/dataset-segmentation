@@ -11,7 +11,7 @@ for file in fileList:
     sentences = f.readlines()
     embeddings = bc.encode(sentences)
     for embedding in embeddings:
-        f1 = open(r'/home/weihui/huiwei/bert/bert_emb_train', 'a+')
+        f1 = open(r'/home/weihui/huiwei/bert/bert_emb_dev', 'a+')
         f1.writelines(str(embedding))
     f1.write('\n')
     f.close()
