@@ -3,7 +3,7 @@ from bert_serving.client import BertClient
 import os
 
 bc = BertClient(check_length=False)  # ip address of the GPU machine
-train_path = r'/home/weihui/huiwei/baseline/text-segmentation-master/data/transcript/wiki_test_50_transcript'
+train_path = r'/home/weihui/huiwei/baseline/text-segmentation-master/data/transcript/en_city_train_transcript'
 fileList = os.listdir(train_path)
 for file in fileList:
     path = os.path.join(train_path, file)
@@ -11,7 +11,7 @@ for file in fileList:
     sentences = f.readlines()
     embeddings = bc.encode(sentences)
     for embedding in embeddings:
-        f1 = open(r'/home/weihui/huiwei/bert/bert_emb_test', 'a+')
+        f1 = open(r'/home/weihui/huiwei/bert/bert_emb_train', 'a+')
         f1.writelines(str(embedding))
     f1.write('\n')
     f.close()
