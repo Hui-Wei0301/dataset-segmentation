@@ -42,7 +42,7 @@ def read_sent_bert(topic_vec, path):
             topic_vec.append(tmp)
             tmp = []
         else:
-            l = line.replace('[', '').replace(']', '').strip().split()
+            l = line.strip().replace('[', '').replace(']', '').split()
             tmp.append([float(s) for s in l])
     return topic_vec
 
