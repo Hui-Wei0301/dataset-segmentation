@@ -6,7 +6,7 @@ bc = BertClient()  # ip address of the GPU machine
 train_path = r'\home\weihui\huiwei\baseline\text-segmentation-master\data\WikiSection\wikisection_dataset_ref\en_city_dev'
 # train_path = r'D:\dissertation\baseline\text-segmentation-master\data\wikisection\wikisection_dataset_ref\en_city_train'
 fileList = os.listdir(train_path)
-f1 = open(r'/home/weihui/huiwei/bert/bert_emb_dev', 'a+')
+f1 = open(r'/home/weihui/huiwei/bert/bert_emb_dev.txt', 'a+')
 for file in fileList:
     path = os.path.join(train_path, file)
     f = open(path,'r',encoding='utf-8')
