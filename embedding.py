@@ -3,10 +3,10 @@ from bert_serving.client import BertClient
 import os
 
 bc = BertClient(check_length=False)  # ip address of the GPU machine
-train_path = r'/home/weihui/huiwei/baseline/text-segmentation-master/data/transcript/en_disease_train_transcript'
+train_path = r'/home/weihui/huiwei/baseline/text-segmentation-master/data/transcript/wiki_test_50_transcript'
 # train_path = r'D:\dissertation\baseline\text-segmentation-master\data\wikisection\wikisection_dataset_ref\en_city_train'
 fileList = os.listdir(train_path)
-f1 = open(r'/home/weihui/huiwei/bert/bert_emb_dev.txt', 'a+')
+f1 = open(r'/home/weihui/huiwei/bert/bert_emb_test.txt', 'a+')
 for file in fileList:
     path = os.path.join(train_path, file)
     f = open(path,'r',encoding='utf-8')
