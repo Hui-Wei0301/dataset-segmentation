@@ -4,7 +4,7 @@ from torch.autograd import Variable
 import torch.nn.functional as F
 import torch.nn as nn
 
-from choiloader import ChoiDataset, collate_fnyu
+from choiloader import ChoiDataset, collate_fn
 from tqdm import tqdm
 from argparse import ArgumentParser
 from utils import maybe_cuda
@@ -303,7 +303,7 @@ def main(args):
 
     # read the pretrained BERT sentence embeddings...
     
-    bound1 = 14900; bound2 = 2135; bound3 = 50; bound4 = 100; bound5 = 117; bound6 = 227;
+    bound1 = 13679; bound2 = 2513; bound3 = 50; bound4 = 100; bound5 = 117; bound6 = 227;
     bert_vec = []
 
     bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_train.txt')
