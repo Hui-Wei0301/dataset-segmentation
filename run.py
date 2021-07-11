@@ -42,7 +42,7 @@ def read_sent_bert(topic_vec, path):
             topic_vec.append(tmp)
             tmp = []
         else:
-            l = line.strip().replace('[', '').replace(']', '').split()
+            l = line.replace('[', '').replace(']', '').strip().split()
             tmp.append([float(s) for s in l])
     return topic_vec
 
@@ -328,10 +328,10 @@ def main(args):
             train_dataset = WikipediaDataSet(dataset_path / 'train', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=train_bert)
             dev_dataset = WikipediaDataSet(dataset_path / 'dev', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=dev_bert)
             test_dataset = WikipediaDataSet(dataset_path / 'test', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test_bert)
-            test_dataset_2 = WikipediaDataSet(dataset_path / 'test_cities', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test2_bert)
-            test_dataset_3 = WikipediaDataSet(dataset_path / 'test_elements', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test3_bert)
-            test_dataset_4 = WikipediaDataSet(dataset_path / 'test_clinical', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test4_bert)
-            test_dataset_5 = WikipediaDataSet(dataset_path / 'test_wiki', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test5_bert)
+            # test_dataset_2 = WikipediaDataSet(dataset_path / 'test_cities', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test2_bert)
+            # test_dataset_3 = WikipediaDataSet(dataset_path / 'test_elements', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test3_bert)
+            # test_dataset_4 = WikipediaDataSet(dataset_path / 'test_clinical', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test4_bert)
+            # test_dataset_5 = WikipediaDataSet(dataset_path / 'test_wiki', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test5_bert)
 
         else:
             dataset_path = Path(utils.config['choidataset'])
@@ -347,14 +347,14 @@ def main(args):
                             num_workers=args.num_workers)
         test_dl = DataLoader(test_dataset, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
                              num_workers=args.num_workers)
-        test_dl_2 = DataLoader(test_dataset_2, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
-                             num_workers=args.num_workers)
-        test_dl_3 = DataLoader(test_dataset_3, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
-                             num_workers=args.num_workers)
-        test_dl_4 = DataLoader(test_dataset_4, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
-                             num_workers=args.num_workers)
-        test_dl_5 = DataLoader(test_dataset_5, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
-                             num_workers=args.num_workers)
+        # test_dl_2 = DataLoader(test_dataset_2, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
+        #                      num_workers=args.num_workers)
+        # test_dl_3 = DataLoader(test_dataset_3, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
+        #                      num_workers=args.num_workers)
+        # test_dl_4 = DataLoader(test_dataset_4, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
+        #                      num_workers=args.num_workers)
+        # test_dl_5 = DataLoader(test_dataset_5, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
+        #                      num_workers=args.num_workers)
 
     assert bool(args.model) ^ bool(args.load_from)  # exactly one of them must be set
 
@@ -375,10 +375,10 @@ def main(args):
 
             val_pk, threshold = validate(model, args, j, dev_dl, logger)
             test_pk = test(model, args, j, test_dl, logger, threshold)
-            test_pk2 = test(model, args, j, test_dl_2, logger, threshold)
-            test_pk3 = test(model, args, j, test_dl_3, logger, threshold)
-            test_pk4 = test(model, args, j, test_dl_4, logger, threshold)
-            test_pk5 = test(model, args, j, test_dl_5, logger, threshold)
+            # test_pk2 = test(model, args, j, test_dl_2, logger, threshold)
+            # test_pk3 = test(model, args, j, test_dl_3, logger, threshold)
+            # test_pk4 = test(model, args, j, test_dl_4, logger, threshold)
+            # test_pk5 = test(model, args, j, test_dl_5, logger, threshold)
             if val_pk < best_val_pk:
                 logger.debug(
                     colored(
