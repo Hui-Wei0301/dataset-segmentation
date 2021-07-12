@@ -306,9 +306,12 @@ def main(args):
     bound1 = 13679; bound2 = 2513; bound3 = 50; bound4 = 100; bound5 = 117; bound6 = 227;
     bert_vec = []
 
-    bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_train.txt')
-    bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_dev.txt')
-    bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_test.txt')
+    # bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_train.txt')
+    # bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_dev.txt')
+    # bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_test.txt')
+    bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_train.txt')
+    bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_dev.txt')
+    bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_test.txt')
     # bert_vec = read_sent_bert(bert_vec, '/ubc/cs/research/nlp/Linzi/seg/bert/bert_emb_test_2.txt')
     # bert_vec = read_sent_bert(bert_vec, '/ubc/cs/research/nlp/Linzi/seg/bert/bert_emb_test_3.txt')
     # bert_vec = read_sent_bert(bert_vec, '/ubc/cs/research/nlp/Linzi/seg/bert/bert_emb_test_4.txt')
@@ -326,6 +329,13 @@ def main(args):
         if args.wiki:
             dataset_path = Path(utils.config['wikidataset'])
             train_dataset = WikipediaDataSet(dataset_path / 'train', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=train_bert)
+            count = 0
+            for data, targets, path, sent_bert_vec in train_dataset:
+                if count >= 1:
+                    break
+                else:
+                    print(data, targets, path, sent_bert_vec)
+                    count += 1
             dev_dataset = WikipediaDataSet(dataset_path / 'dev', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=dev_bert)
             test_dataset = WikipediaDataSet(dataset_path / 'test', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test_bert)
             # test_dataset_2 = WikipediaDataSet(dataset_path / 'test_cities', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test2_bert)
@@ -343,6 +353,13 @@ def main(args):
 
         train_dl = DataLoader(train_dataset, batch_size=args.bs, collate_fn=collate_fn, shuffle=True,
                               num_workers=args.num_workers)
+        count = 0
+        for batched_data, batched_targets, paths, batched_sent_bert_vec, batch_targets_idx in train_dl:
+            if count >= 1:
+                break
+            else:
+                print(batched_data, batched_targets, paths, batched_sent_bert_vec, batch_targets_idx)
+                count += 1
         dev_dl = DataLoader(dev_dataset, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
                             num_workers=args.num_workers)
         test_dl = DataLoader(test_dataset, batch_size=args.test_bs, collate_fn=collate_fn, shuffle=False,
