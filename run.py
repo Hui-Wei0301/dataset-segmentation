@@ -334,7 +334,8 @@ def main(args):
                 if count >= 1:
                     break
                 else:
-                    print(targets)
+                    print('data shape:', data.shape)
+                    print('targets', targets)
                     count += 1
             dev_dataset = WikipediaDataSet(dataset_path / 'dev', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=dev_bert)
             test_dataset = WikipediaDataSet(dataset_path / 'test', word2vec=word2vec, high_granularity=args.high_granularity, sent_bert=test_bert)
