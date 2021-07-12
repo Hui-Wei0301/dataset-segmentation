@@ -306,12 +306,12 @@ def main(args):
     bound1 = 13679; bound2 = 2513; bound3 = 50; bound4 = 100; bound5 = 117; bound6 = 227;
     bert_vec = []
 
-    # bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_train.txt')
-    # bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_dev.txt')
-    # bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_test.txt')
-    bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_train.txt')
-    bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_dev.txt')
-    bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_test.txt')
+    bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_train.txt')
+    bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_dev.txt')
+    bert_vec = read_sent_bert(bert_vec, '/home/weihui/huiwei/bert/bert_emb_test.txt')
+    # bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_train.txt')
+    # bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_dev.txt')
+    # bert_vec = read_sent_bert(bert_vec, '../bert/bert_emb_test.txt')
     # bert_vec = read_sent_bert(bert_vec, '/ubc/cs/research/nlp/Linzi/seg/bert/bert_emb_test_2.txt')
     # bert_vec = read_sent_bert(bert_vec, '/ubc/cs/research/nlp/Linzi/seg/bert/bert_emb_test_3.txt')
     # bert_vec = read_sent_bert(bert_vec, '/ubc/cs/research/nlp/Linzi/seg/bert/bert_emb_test_4.txt')
